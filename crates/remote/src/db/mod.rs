@@ -104,10 +104,17 @@ pub(crate) async fn ensure_electric_role_password(
         return Ok(());
     }
 
+    let (role_name,): (String,) = sqlx::query_as(
+        "SELECT coalesce(current_setting('vibekanban.electric_role_name', true), 'electric_sync')",
+    )
+    .fetch_one(pool)
+    .await?;
+
     // PostgreSQL doesn't support parameter binding for ALTER ROLE PASSWORD
     // We need to escape the password properly and embed it directly in the SQL
     let escaped_password = password.replace("'", "''");
-    let sql = format!("ALTER ROLE electric_sync WITH PASSWORD '{escaped_password}'");
+    let escaped_role = role_name.replace('"', "\"\"");
+    let sql = format!("ALTER ROLE \"{escaped_role}\" WITH PASSWORD '{escaped_password}'");
 
     sqlx::query(&sql).execute(pool).await?;
 

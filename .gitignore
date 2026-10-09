@@ -39,6 +39,9 @@ bindings/
 ehthumbs.db
 Thumbs.db
 
+# Release
+crates/remote/docker-compose.prod.yml
+
 # Runtime data
 pids
 *.pid
