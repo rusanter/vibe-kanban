@@ -5,7 +5,7 @@ use api_types::{
     CreateIssueCommentReactionRequest, CreateIssueCommentRequest, CreateIssueFollowerRequest,
     CreateIssueRelationshipRequest, CreateIssueRequest, CreateIssueTagRequest,
     CreateProjectRequest, CreateProjectStatusRequest, CreatePullRequestIssueRequest,
-    CreateTagRequest, ExportRequest, Issue, IssueAssignee, IssueComment, IssueCommentReaction,
+    CreateTagRequest, Issue, IssueAssignee, IssueComment, IssueCommentReaction,
     IssueFollower, IssuePriority, IssueRelationship, IssueRelationshipType, IssueSortField,
     IssueTag, ListIssuesQuery, ListIssuesResponse, MemberRole, Notification, NotificationGroupKind,
     NotificationPayload, NotificationType, OrganizationMember, Project, ProjectStatus, PullRequest,
@@ -134,8 +134,6 @@ fn export_shapes() -> String {
         CommitAttachmentsRequest::decl(),
         CommitAttachmentsResponse::decl(),
         AttachmentUrlResponse::decl(),
-        // Export API types
-        ExportRequest::decl(),
     ];
 
     for decl in type_decls {
