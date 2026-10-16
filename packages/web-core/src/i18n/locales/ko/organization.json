@@ -71,7 +71,7 @@
   },
   "personalOrg": {
     "cannotInvite": "개인 조직에는 추가 멤버를 포함할 수 없습니다.",
-    "createOrgPrompt": "Create an organization to collaborate with others.",
-    "createOrgButton": "Create Organization"
+    "createOrgPrompt": "다른 사람과 협업하려면 조직을 만드세요.",
+    "createOrgButton": "조직 만들기"
   }
 }
