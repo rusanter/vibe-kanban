@@ -108,8 +108,8 @@ pub async fn create_portal_session(
 
 pub async fn create_checkout_session() -> Result<StatusCode, ErrorResponse> {
     Err(ErrorResponse::new(
-        StatusCode::GONE,
-        "New subscriptions are disabled because Vibe Kanban Cloud is shutting down",
+        StatusCode::SERVICE_UNAVAILABLE,
+        "Checkout is not available",
     ))
 }
 

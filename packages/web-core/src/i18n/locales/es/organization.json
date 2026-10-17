@@ -71,7 +71,7 @@
   },
   "personalOrg": {
     "cannotInvite": "Las organizaciones personales no pueden tener miembros adicionales.",
-    "createOrgPrompt": "Create an organization to collaborate with others.",
-    "createOrgButton": "Create Organization"
+    "createOrgPrompt": "Crea una organización para colaborar con otros.",
+    "createOrgButton": "Crear organización"
   }
 }

@@ -7,7 +7,6 @@ import {
 import type { ReactNode } from 'react';
 import {
   LayoutIcon,
-  DownloadSimpleIcon,
   LinkIcon,
   PlusIcon,
   KanbanIcon,
@@ -49,7 +48,6 @@ interface AppBarProps {
   onPairHostClick?: () => void;
   activeHostId?: string | null;
   onCreateProject: () => void;
-  onExportClick?: () => void;
   onWorkspacesClick: () => void;
   onHostClick?: (hostId: string, status: AppBarHostStatus) => void;
   showWorkspacesButton?: boolean;
@@ -57,7 +55,6 @@ interface AppBarProps {
   onProjectsDragEnd: (result: DropResult) => void;
   isSavingProjectOrder?: boolean;
   isWorkspacesActive: boolean;
-  isExportActive?: boolean;
   activeProjectId: string | null;
   isSignedIn?: boolean;
   isLoadingProjects?: boolean;
@@ -113,7 +110,7 @@ const appBarItemBaseClassName =
   'flex items-center justify-center w-10 h-10 rounded-lg text-sm font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-brand';
 
 type AppBarSection = {
-  key: 'local' | 'remote' | 'projects' | 'export';
+  key: 'local' | 'remote' | 'projects';
   label: string;
   items: AppBarSectionItem[];
 };
@@ -201,7 +198,6 @@ export function AppBar({
   onPairHostClick,
   activeHostId = null,
   onCreateProject,
-  onExportClick,
   onWorkspacesClick,
   onHostClick,
   showWorkspacesButton = true,
@@ -209,7 +205,6 @@ export function AppBar({
   onProjectsDragEnd,
   isSavingProjectOrder,
   isWorkspacesActive,
-  isExportActive = false,
   activeProjectId,
   isSignedIn,
   isLoadingProjects,
@@ -325,23 +320,6 @@ export function AppBar({
       key: 'projects',
       label: 'Projects',
       items: projectSectionItems,
-    });
-  }
-
-  if (isSignedIn && onExportClick) {
-    sections.push({
-      key: 'export',
-      label: 'Export',
-      items: [
-        {
-          key: 'export-data',
-          kind: 'icon-button',
-          label: 'Export data',
-          icon: DownloadSimpleIcon,
-          isActive: isExportActive,
-          onClick: onExportClick,
-        },
-      ],
     });
   }
 

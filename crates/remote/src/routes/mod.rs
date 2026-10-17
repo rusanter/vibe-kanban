@@ -28,7 +28,6 @@ mod billing {
 pub mod attachments;
 pub(crate) mod electric_proxy;
 pub(crate) mod error;
-mod export;
 mod github_app;
 pub mod hosts;
 mod identity;
@@ -133,7 +132,6 @@ pub fn router(state: AppState) -> Router {
         .merge(notifications::router())
         .merge(workspaces::router())
         .merge(billing::protected_router())
-        .merge(export::router())
         .layer(middleware::from_fn_with_state(
             state.clone(),
             require_session,
